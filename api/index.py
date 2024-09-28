@@ -403,6 +403,7 @@ def send_otp_email(email, otp):
 def send_otp():
     data = request.get_json()
     username = data.get('email')  # The 'email' field actually contains the username
+    print(username)
 
     if not username:
         return jsonify(message='Username is required'), 400
@@ -424,7 +425,7 @@ def send_otp():
         return jsonify(message='OTP sent successfully'), 200
     except Exception as e:
         print(f"Error sending OTP: {str(e)}")
-        return jsonify(message='Failed to send OTP. Please try again.'), 500
+        return jsonify(message='Failed to send OTP. Please try again.'+str(e)), 500
 
 
 @app.route('/chef/verify-otp', methods=['POST'])
