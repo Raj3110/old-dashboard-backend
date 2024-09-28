@@ -46,11 +46,14 @@ google_blueprint = make_google_blueprint(
 app.register_blueprint(google_blueprint, url_prefix="/login")
 
 
-@app.route("/", methods=["POST"])
+@app.route("/")
 def index():
-    if not google.authorized:
-        return redirect(url_for("google.login"))
-    return redirect(url_for("google_callback"))
+    print('running.....')
+#@app.route("/", methods=["POST"])
+#def index():
+#    if not google.authorized:
+#        return redirect(url_for("google.login"))
+#    return redirect(url_for("google_callback"))
 
 
 @app.route("/callback")
